@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback } from "react";
 import { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import { useState } from "react";
@@ -54,7 +54,7 @@ function Dashboard() {
     }
   };
 
-  const getUserLogs = async () => {
+  const getUserLogs = useCallback(async () => {
     const user_id = user_details?._id;
     if (!user_id) return;
     try {
@@ -76,7 +76,7 @@ function Dashboard() {
     } catch (error) {
       console.log(error);
     }
-  };
+  }, [user_details]);
 
   const getUserDetails = async () => {
     try {
@@ -109,11 +109,11 @@ function Dashboard() {
     } else {
       navigate("/login");
     }
-  }, [localStorage.getItem("token")]); // Add localStorage.getItem('token') as a dependency
+  }, [navigate]); // Add localStorage.getItem('token') as a dependency
 
   useEffect(() => {
     getUserLogs();
-  }, [user_details]); // Add user_details as a dependency
+  }, [user_details, getUserLogs]); // Add user_details as a dependency
   const [selectedTab, setSelectedTab] = useState(0);
   const [checkInVisible, setCheckInVisible] = useState(false);
   const [purpose, setPurpose] = useState("");

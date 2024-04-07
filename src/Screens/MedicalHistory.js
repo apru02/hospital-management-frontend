@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import { TailSpin } from "react-loader-spinner";
+import { useCallback } from "react";
 function MedicalHistory({ user_details }) {
   const [medicalHistory, setMedicalHistory] = useState([]);
   const [loading, setLoading] = useState(false);
-  const getMedicalHistory = async () => {
+  const getMedicalHistory = useCallback(async () => {
     setLoading(true);
     const user_id = user_details?._id;
     console.log(user_details);
@@ -30,10 +31,10 @@ function MedicalHistory({ user_details }) {
       console.log(error);
     }
     setLoading(false);
-  };
+  }, [user_details]);
   useEffect(() => {
     getMedicalHistory();
-  }, []);
+  }, [getMedicalHistory]);
   return (
     <div className="flex flex-col items-center">
       <TailSpin
@@ -63,7 +64,7 @@ function MedicalHistory({ user_details }) {
       </button>
       <div
         className="flex flex-row items-center mt-2"
-        style={{ justifyContent: "space-between", width: "76%"}}
+        style={{ justifyContent: "space-between", width: "76%" }}
       >
         <span className="font-bold">{user_details?.name}</span>
         <span className="font-bold ml-5">{user_details?.city}</span>
