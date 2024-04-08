@@ -5,7 +5,9 @@ import { useState } from "react";
 import { BASE_URL } from "../utils/constant";
 import Reception from "./Reception";
 import MedicalHistory from "./MedicalHistory";
+import MedicalInventory from "./MedicalInventory";
 import Doctor from "./Doctor";
+import Finance from "./Finance";
 function Dashboard() {
   const navigate = useNavigate();
   const [user_details, setUserDetails] = useState({});
@@ -496,6 +498,10 @@ function Dashboard() {
         <Doctor user_details={user_details} />
       ) : selectedTab === 6 ? (
         <MedicalHistory user_details={user_details} />
+      ) : selectedTab === 5 ? (
+        <MedicalInventory user_details={user_details} />
+      ) : selectedTab === 4 ? (
+        <Finance user_details={user_details} />
       ) : null}
     </div>
   );

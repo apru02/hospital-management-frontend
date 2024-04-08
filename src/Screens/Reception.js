@@ -20,13 +20,13 @@ function Reception({ user_details }) {
         },
         body: JSON.stringify({ email: email }),
       });
-     // console.log(email);
+      // console.log(email);
 
       const data = await response.json();
-     // console.log(data);
+      // console.log(data);
       if (data.success) {
         setSearchedUser(data.data);
-      //  console.log(data.data);
+        //  console.log(data.data);
       } else {
         console.log("User not found");
         setSearchedUser({});
@@ -89,7 +89,7 @@ function Reception({ user_details }) {
         body: JSON.stringify(body),
       });
       const data = await response.json();
-     // console.log(data);
+      // console.log(data);
 
       if (data.success) {
         alert("User created successfully");
@@ -232,7 +232,7 @@ function Reception({ user_details }) {
               }}
               validationSchema={validationSchema}
               onSubmit={(values) => {
-               // console.log(values);
+                // console.log(values);
                 createUser(values);
                 //clear form
                 values.name = "";
