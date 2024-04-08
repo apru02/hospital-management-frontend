@@ -39,12 +39,13 @@ function Login() {
         height: "100vh",
         width: "100vw",
         backdropFilter: "blur(5px)",
-        color: "white",
       }}
     >
-      <h1 className="text-3xl font-bold">Hospital Management System</h1>
+      <h1 className="text-3xl font-bold text-white">
+        Hospital Management System
+      </h1>
       <div className="flex flex-col items-center mt-10">
-        <h2 className="text-2xl font-bold">User Login</h2>
+        <h2 className="text-2xl font-bold text-white">User Login</h2>
         <Formik
           initialValues={{ email: "", password: "" }}
           validationSchema={validationSchema}
